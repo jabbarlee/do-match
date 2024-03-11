@@ -15,17 +15,17 @@ const pool = new Pool({
     port: 5432, // Default PostgreSQL port
 });
 
-// app.post('/insert/player', async(req, res) => {
-//     const player = 'jabbarlee'
-//     const matchId = '6habs7dmjsuf7'
+app.post('/insert/player', async(req, res) => {
+    const player = req.body.player
+    const matchId = req.body.match
 
-//     pool.query('insert into players ("player", "match-id") values ($1, $2)', [player, matchId], (err) => {
-//         if(err){
-//           console.log('Error inserting to database' + err);
-//           res.status(500).send('Database error');
-//         }
-//     });
-// })
+    pool.query('insert into players ("player", "match-id") values ($1, $2)', [player, matchId], (err) => {
+        if(err){
+          console.log('Error inserting to database' + err);
+          res.status(500).send('Database error');
+        }
+    });
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running on PORT: ${PORT}`)
