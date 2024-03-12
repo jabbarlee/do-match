@@ -62,7 +62,7 @@ const page = () => {
             
             <div>
                 {clientPlayers.length >= 2 ? (
-                    <Link href='/'>
+                    <Link href='/competition'>
                         <button className="link-button">Next</button>
                     </Link>
                 ) : (

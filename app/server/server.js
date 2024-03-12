@@ -27,6 +27,15 @@ app.post('/insert/player', async(req, res) => {
     });
 })
 
+app.get('/fetch/players', async(req, res) => {
+    try{
+        const data = pool.query(`select "player" from players where "match-id" = '686a376a45f37'`);
+        res.json((await data).rows)
+    }catch(error){
+        console.warn(error);
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running on PORT: ${PORT}`)
 })
